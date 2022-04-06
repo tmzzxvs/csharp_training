@@ -7,7 +7,7 @@ namespace addressbook_web_tests
     public class UnitTest1
     {
         [TestMethod]
-        public void TestMethod_1()
+        public void TestMethod1()
         {
         }
     }
