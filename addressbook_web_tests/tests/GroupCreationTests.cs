@@ -13,22 +13,22 @@ namespace addressbook_web_tests
     {
          [Test]
         public void GroupCreationTest()
-        {
-            app.navi.OpenHomePage();
-            app.auth.Login(new AccountData("admin", "secret"));
-            app.navi.GoToGroupsPage();
-            app.groups.InitNewGroupCreation();
-            GroupData group = new GroupData("Group_12");
-            group.Footer = "test_3";
-            group.Header = "test_33";
-            app.groups.FillGroupForm(group);
-            app.groups.SubmitGroupCreation();
-            app.groups.ReturnToGroupsPage();
-            app.navi.ExitFromAddressbook();
-        }
+            {
+                GroupData group = new GroupData("Group_12");
+                group.Footer = "test_3";
+                group.Header = "test_33";
+                app.groups.Create(group);
+            }
+        [Test]
+        public void EmptyGroupCreationTest()
+            {
+                GroupData group = new GroupData("");
+                group.Footer = "";
+                group.Header = "";
+                app.groups.Create(group);
+            }
 
-        
-                      
-                                     
+
+
     }
 }
