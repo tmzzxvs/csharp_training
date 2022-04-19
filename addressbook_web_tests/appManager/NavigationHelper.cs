@@ -33,5 +33,15 @@ namespace addressbook_web_tests
         {
             driver.FindElement(By.LinkText("Logout")).Click();
         }
+        public void ReturnToGroupsPage()
+        {
+            driver.FindElement(By.LinkText("group page")).Click();
+          //  return this;
+        }
+        public void ReturnToHomePage()
+        {
+            driver.FindElement(By.LinkText("home page")).Click();
+        //    return this;
+        }
     }
 }
