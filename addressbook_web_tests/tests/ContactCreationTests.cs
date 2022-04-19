@@ -3,9 +3,6 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Firefox;
-using OpenQA.Selenium.Support.UI;
 
 namespace addressbook_web_tests
 {
@@ -22,9 +19,17 @@ namespace addressbook_web_tests
             contact.Lastname = "ffffffff";
 
             app.contacts.CreateContact(contact);
+        }
+        [Test]
+        public void EmptyContactCreationTest()
+        {
 
+            ContactData contact = new ContactData("");
+            contact.Middlename = "";
+            contact.Lastname = "";
 
-        }          
-        
+            app.contacts.CreateContact(contact);
+        }
+
     }
 }

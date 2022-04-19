@@ -5,9 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Firefox;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;
 
 namespace addressbook_web_tests
 {
@@ -24,7 +21,6 @@ namespace addressbook_web_tests
         {
             driver.Navigate().GoToUrl(baseURL);
         }
-
         public void GoToGroupsPage()
         {
             driver.FindElement(By.LinkText("groups")).Click();
@@ -36,12 +32,10 @@ namespace addressbook_web_tests
         public void ReturnToGroupsPage()
         {
             driver.FindElement(By.LinkText("group page")).Click();
-          //  return this;
         }
-        public void ReturnToHomePage()
+        public void ClickHomeButton()
         {
-            driver.FindElement(By.LinkText("home page")).Click();
-        //    return this;
+            driver.FindElement(By.LinkText("home")).Click();
         }
     }
 }
