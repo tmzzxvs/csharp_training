@@ -13,8 +13,8 @@ namespace addressbook_web_tests
 
         public LoginHelper(ApplicationManager manager) 
             : base(manager)
-            {
-            }
+        {
+        }
         public void Login(AccountData account)
         {
             Type(By.Name("user"), account.Username);
