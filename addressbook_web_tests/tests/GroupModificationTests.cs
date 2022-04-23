@@ -17,7 +17,7 @@ namespace addressbook_web_tests
             GroupData newData = new GroupData("sssss");
             newData.Footer = "ttt";
             newData.Header = "qqq";
-            app.groups.Modify(1, newData);
+            app.Groups.Modify(1, newData);
 
         }
     }

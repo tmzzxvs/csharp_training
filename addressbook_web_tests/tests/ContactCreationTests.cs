@@ -18,7 +18,7 @@ namespace addressbook_web_tests
             contact.Middlename = "dddddd";
             contact.Lastname = "ffffffff";
 
-            app.contacts.CreateContact(contact);
+            app.Contacts.CreateContact(contact);
         }
         [Test]
         public void EmptyContactCreationTest()
@@ -28,7 +28,7 @@ namespace addressbook_web_tests
             contact.Middlename = "";
             contact.Lastname = "";
 
-            app.contacts.CreateContact(contact);
+            app.Contacts.CreateContact(contact);
         }
 
     }

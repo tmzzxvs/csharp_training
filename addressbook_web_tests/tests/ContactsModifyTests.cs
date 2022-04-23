@@ -18,7 +18,7 @@ namespace addressbook_web_tests
             NewContactData.Middlename = "dddddd";
             NewContactData.Lastname = "ffffffff";
 
-            app.contacts.ModifyContact(1, NewContactData);
+            app.Contacts.ModifyContact(1, NewContactData);
         }
 
         

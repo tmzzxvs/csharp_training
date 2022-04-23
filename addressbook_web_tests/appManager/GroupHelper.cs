@@ -18,29 +18,29 @@ namespace addressbook_web_tests
 
         public GroupHelper Create(GroupData group)
         {
-            manager.navi.GoToGroupsPage();
+            manager.Navi.GoToGroupsPage();
             InitNewGroupCreation();
             FillGroupForm(group);
             SubmitGroupCreation();
-            manager.navi.ReturnToGroupsPage();
+            manager.Navi.ReturnToGroupsPage();
             return this;
         }
         public GroupHelper Modify(int v, GroupData newData)
         {
-            manager.navi.GoToGroupsPage();
+            manager.Navi.GoToGroupsPage();
             SelectGroup(v);
             InitGroupModification();
             FillGroupForm(newData);
             SubmitGroupModification();
-            manager.navi.ReturnToGroupsPage();
+            manager.Navi.ReturnToGroupsPage();
             return this;
         }
         public GroupHelper Remove(int v)
         {
-            manager.navi.GoToGroupsPage();
+            manager.Navi.GoToGroupsPage();
             SelectGroup(v);
             RemoveGroup();
-            manager.navi.ReturnToGroupsPage();
+            manager.Navi.ReturnToGroupsPage();
             return this;
         }
         public GroupHelper InitNewGroupCreation()
@@ -50,14 +50,13 @@ namespace addressbook_web_tests
         }
         public GroupHelper FillGroupForm(GroupData group)
         {
-            driver.FindElement(By.Name("group_name")).Clear();
-            driver.FindElement(By.Name("group_name")).SendKeys(group.Name);
-            driver.FindElement(By.Name("group_header")).Clear();
-            driver.FindElement(By.Name("group_header")).SendKeys(group.Header);
-            driver.FindElement(By.Name("group_footer")).Clear();
-            driver.FindElement(By.Name("group_footer")).SendKeys(group.Footer);
+            Type(By.Name("group_name"), group.Name);
+            Type(By.Name("group_header"), group.Header);
+            Type(By.Name("group_footer"), group.Footer);
             return this;
         }
+
+        
         public GroupHelper SubmitGroupCreation()
         {
             driver.FindElement(By.Name("submit")).Click();

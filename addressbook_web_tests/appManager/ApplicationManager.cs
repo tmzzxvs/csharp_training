@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
@@ -17,26 +18,26 @@ namespace addressbook_web_tests
         protected string baseURL;
 
         protected LoginHelper loginHelper;
-        protected NavigationHelper navigator;
-        protected GroupHelper gHelper;
-        protected ContactHelper contHelper;
+        protected NavigationHelper navigationHelper;
+        protected GroupHelper groupHelper;
+        protected ContactHelper contactHelper;
+        
+        private static ThreadLocal<ApplicationManager> app = new ThreadLocal<ApplicationManager>();
 
-        public ApplicationManager()
+        private ApplicationManager()
         {
             driver = new FirefoxDriver();
+      //    driver = new ChromeDriver();
             baseURL = "http://localhost/addressbook";
 
             loginHelper = new LoginHelper(this);
-            navigator = new NavigationHelper(this, baseURL);
-            gHelper = new GroupHelper(this);
-            contHelper = new ContactHelper(this);
+            navigationHelper = new NavigationHelper(this, baseURL);
+            groupHelper = new GroupHelper(this);
+            contactHelper = new ContactHelper(this);
         }
-        public IWebDriver Driver 
-            {
-                get { return driver; } 
-            }
-        public void Stop()
-            {
+
+        ~ApplicationManager()
+        {
             try
             {
                 driver.Quit();
@@ -46,21 +47,35 @@ namespace addressbook_web_tests
                 // Ignore errors if unable to close the browser
             }
         }
-        public LoginHelper auth
+        public static ApplicationManager GetInstance()
+        {
+            if (! app.IsValueCreated)
+            {
+                app.Value = new ApplicationManager();
+            }
+            return app.Value;
+        }
+
+        public IWebDriver Driver 
+        {
+                get { return driver; } 
+        }
+
+        public LoginHelper Auth
             { get
                 { return loginHelper; }
             }
-        public NavigationHelper navi
+        public NavigationHelper Navi
             { get 
-                { return navigator; } 
+                { return navigationHelper; } 
             }
-        public GroupHelper groups
+        public GroupHelper Groups
         {
-            get { return gHelper; }
+            get { return groupHelper; }
         }
-        public ContactHelper contacts
+        public ContactHelper Contacts
         { 
-            get { return contHelper; }
+            get { return contactHelper; }
         }
     }
        

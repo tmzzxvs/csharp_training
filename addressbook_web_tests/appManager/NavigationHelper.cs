@@ -25,7 +25,7 @@ namespace addressbook_web_tests
         {
             driver.FindElement(By.LinkText("groups")).Click();
         }
-        public void ExitFromAddressbook()
+        public void Logout()
         {
             driver.FindElement(By.LinkText("Logout")).Click();
         }
