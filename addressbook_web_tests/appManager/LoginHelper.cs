@@ -34,19 +34,19 @@ namespace addressbook_web_tests
         {
             if (IsLoggedIn())
             {
-                driver.FindElement(By.LinkText("Logout")).Click();
+                driver.FindElement(By.Name("logout")).Click();
             }
 
         }
         public bool IsLoggedIn()
         {
-            return IsElementPresent(By.Name("Logout"));
+            return IsElementPresent(By.Name("logout"));
         }
 
         public bool IsLoggedIn(AccountData account)
         {
             return IsLoggedIn()
-                && driver.FindElement(By.Name("Logout")).FindElement(By.TagName("b")).Text 
+                && driver.FindElement(By.XPath("//form[@name=\"logout\"]/b")).Text 
                     == "(" + account.Username + ")";            
         }
         

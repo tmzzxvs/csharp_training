@@ -22,7 +22,8 @@ namespace addressbook_web_tests
         protected GroupHelper groupHelper;
         protected ContactHelper contactHelper;
         
-        private static ThreadLocal<ApplicationManager> app = new ThreadLocal<ApplicationManager>();
+        
+        private static readonly ThreadLocal<ApplicationManager> app = new ThreadLocal<ApplicationManager>();
 
         private ApplicationManager()
         {
