@@ -3,7 +3,7 @@
   <Class Name="addressbook_web_tests.TestBase">
     <Position X="1.5" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAIAAAAAAAAAAAAABAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
       <FileName>tests\TestBase.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -27,14 +27,11 @@
   <Class Name="addressbook_web_tests.ApplicationManager">
     <Position X="4.75" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QAAEBAQAAAAAAAAAAAAAAASAQAAAgAAAMAAIAAAAACA=</HashCode>
+      <HashCode>BAAAAEAAAAAAAAAAAABAAASABAAAgAAAADCAABEAACA=</HashCode>
       <FileName>appManager\ApplicationManager.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Field Name="loginHelper" />
-      <Field Name="navigator" />
-      <Field Name="gHelper" />
-      <Field Name="contHelper" />
     </ShowAsAssociation>
   </Class>
   <Class Name="addressbook_web_tests.GroupHelper" Collapsed="true">
@@ -47,21 +44,21 @@
   <Class Name="addressbook_web_tests.LoginHelper" Collapsed="true">
     <Position X="7.5" Y="2.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAASAAAAAAA=</HashCode>
       <FileName>appManager\LoginHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="addressbook_web_tests.NavigationHelper" Collapsed="true">
     <Position X="7.5" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>IAIAAgAAAAAAAAAAAAAAAAAAAAAIIAAAAAAAAAAAACA=</HashCode>
+      <HashCode>IAIAAAAAAAAAAAAAAAAAAAAAAAAIIAAAAAAAAAAAACA=</HashCode>
       <FileName>appManager\NavigationHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="addressbook_web_tests.HelperBase" Collapsed="true">
+  <Class Name="addressbook_web_tests.HelperBase">
     <Position X="11" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAACEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAABCEAAAAAAAAAQAAAAAAAAA=</HashCode>
       <FileName>appManager\HelperBase.cs</FileName>
     </TypeIdentifier>
   </Class>

@@ -51,7 +51,10 @@ namespace addressbook_web_tests
         {
             if (! app.IsValueCreated)
             {
-                app.Value = new ApplicationManager();
+                ApplicationManager newInstance = new ApplicationManager();
+                newInstance.Navi.OpenHomePage();
+                app.Value = newInstance;
+
             }
             return app.Value;
         }

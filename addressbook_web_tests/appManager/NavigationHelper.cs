@@ -25,10 +25,6 @@ namespace addressbook_web_tests
         {
             driver.FindElement(By.LinkText("groups")).Click();
         }
-        public void Logout()
-        {
-            driver.FindElement(By.LinkText("Logout")).Click();
-        }
         public void ReturnToGroupsPage()
         {
             driver.FindElement(By.LinkText("group page")).Click();

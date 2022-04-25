@@ -9,12 +9,12 @@ namespace addressbook_web_tests
 
 {
     [TestFixture]
-    public class GroupCreationTests : TestBase
+    public class GroupCreationTests : AuthTestBase
     {
          [Test]
         public void GroupCreationTest()
             {
-                GroupData group = new GroupData("Group_12");
+                GroupData group = new GroupData("Group_99999");
                 group.Footer = "test_3";
                 group.Header = "test_33";
                 app.Groups.Create(group);
