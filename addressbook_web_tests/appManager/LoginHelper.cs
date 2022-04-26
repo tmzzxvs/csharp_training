@@ -23,7 +23,6 @@ namespace addressbook_web_tests
                 {
                     return;
                 }
-
                 Logout();
             }
             Type(By.Name("user"), account.Username);
@@ -45,9 +44,9 @@ namespace addressbook_web_tests
 
         public bool IsLoggedIn(AccountData account)
         {
-            return IsLoggedIn()
-                && driver.FindElement(By.XPath("//form[@name=\"logout\"]/b")).Text 
-                    == "(" + account.Username + ")";            
+            return IsLoggedIn() 
+                && driver.FindElement(By.XPath("//form[@name='logout']/b")).Text 
+                == "(" + account.Username + ")";            
         }
         
     }
