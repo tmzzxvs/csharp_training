@@ -34,7 +34,6 @@ namespace addressbook_web_tests
             AccountData account = new AccountData("admin", "123456");
             app.Auth.Login(account);
             //verification
-            Thread.Sleep(2000);
             Assert.IsFalse(app.Auth.IsLoggedIn(account));
         }
     }
