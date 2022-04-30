@@ -27,11 +27,6 @@ namespace addressbook_web_tests
         }
         public GroupHelper Modify(int v, GroupData newData)
         {
-            manager.Navi.GoToGroupsPage();
-            if (ThereIsAGroup(v) == false)
-            {
-                Create(new GroupData ("group_2222"));
-            }
             SelectGroup(v);
             InitGroupModification();
             FillGroupForm(newData);
@@ -41,11 +36,6 @@ namespace addressbook_web_tests
         }
         public GroupHelper Remove(int v)
         {
-            manager.Navi.GoToGroupsPage();
-            if (ThereIsAGroup(v) == false)
-            {
-                Create(new GroupData("group_2222"));
-            }
             SelectGroup(v);
             RemoveGroup();
             manager.Navi.ReturnToGroupsPage();

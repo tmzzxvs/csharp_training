@@ -17,6 +17,12 @@ namespace addressbook_web_tests
             GroupData newData = new GroupData("sssss");
             newData.Footer = "ttt";
             newData.Header = "qqq";
+
+            app.Navi.GoToGroupsPage();
+            if (app.Groups.ThereIsAGroup(1) == false)
+            {
+                app.Groups.Create(new GroupData("group_2222"));
+            }
             app.Groups.Modify(1, newData);
 
         }

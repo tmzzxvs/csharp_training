@@ -13,6 +13,11 @@ namespace addressbook_web_tests
         [Test]
         public void GroupRemovaltest()
         {
+            app.Navi.GoToGroupsPage();
+            if (app.Groups.ThereIsAGroup(1) == false)
+            {
+                app.Groups.Create(new GroupData("group_2222"));
+            }
             app.Groups.Remove(1);
         }
                                     
