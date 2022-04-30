@@ -9,7 +9,7 @@ namespace addressbook_web_tests
 
 {
     [TestFixture]
-    public class GroupCreationTests : AuthTestBase
+    public class GroupCreationTests : GroupTestBase
     {
          [Test]
         public void GroupCreationTest()

@@ -8,12 +8,11 @@ using NUnit.Framework;
 namespace addressbook_web_tests
 {
     [TestFixture]
-    public class GroupRemovalTests : AuthTestBase
+    public class GroupRemovalTests : GroupTestBase
     {   
         [Test]
         public void GroupRemovaltest()
         {
-            app.Navi.GoToGroupsPage();
             if (app.Groups.ThereIsAGroup(1) == false)
             {
                 app.Groups.Create(new GroupData("group_2222"));

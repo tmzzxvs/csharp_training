@@ -29,19 +29,19 @@ namespace addressbook_web_tests
             Type(By.Name("pass"), account.Password);
             driver.FindElement(By.XPath("//input[@value='Login']")).Click();
         }
-        public void Logout()
+        public LoginHelper Logout()
         {
             if (IsLoggedIn())
             { 
                 driver.FindElement(By.LinkText("Logout")).Click();
-            } 
-
+                return this;
+            }
+            return this;
         }
         public bool IsLoggedIn()
         {
             return IsElementPresent(By.LinkText("Logout"));
         }
-
         public bool IsLoggedIn(AccountData account)
         {
             return IsLoggedIn() 

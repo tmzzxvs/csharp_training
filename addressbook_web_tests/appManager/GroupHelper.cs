@@ -18,7 +18,6 @@ namespace addressbook_web_tests
 
         public GroupHelper Create(GroupData group)
         {
-            manager.Navi.GoToGroupsPage();
             InitNewGroupCreation();
             FillGroupForm(group);
             SubmitGroupCreation();

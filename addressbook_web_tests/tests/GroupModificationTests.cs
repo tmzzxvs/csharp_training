@@ -8,7 +8,7 @@ using NUnit.Framework;
 namespace addressbook_web_tests
 {
     [TestFixture]
-    public class GroupModificationTests : AuthTestBase
+    public class GroupModificationTests : GroupTestBase
     {
         [Test]
 
@@ -18,7 +18,6 @@ namespace addressbook_web_tests
             newData.Footer = "ttt";
             newData.Header = "qqq";
 
-            app.Navi.GoToGroupsPage();
             if (app.Groups.ThereIsAGroup(1) == false)
             {
                 app.Groups.Create(new GroupData("group_2222"));

@@ -23,10 +23,6 @@ namespace addressbook_web_tests
         }
         public ContactHelper RemoveContact(int v)
         {
-    //        if (ThereIsAcontact(v) == false)
-    //        {
-   //             CreateContact(new ContactData("AaaaaA"));
-  //         }
             SelectContact(v);
             CLickDeleteButton();
             CloseAlertMessage();

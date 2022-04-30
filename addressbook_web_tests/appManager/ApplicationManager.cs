@@ -27,8 +27,8 @@ namespace addressbook_web_tests
 
         private ApplicationManager()
         {
-      //    driver = new FirefoxDriver();
-            driver = new ChromeDriver();
+            driver = new FirefoxDriver();
+        //    driver = new ChromeDriver();
             baseURL = "http://localhost/addressbook";
 
             loginHelper = new LoginHelper(this);
@@ -59,12 +59,10 @@ namespace addressbook_web_tests
             }
             return app.Value;
         }
-
         public IWebDriver Driver 
         {
                 get { return driver; } 
         }
-
         public LoginHelper Auth
             { get
                 { return loginHelper; }
