@@ -18,6 +18,10 @@ namespace addressbook_web_tests
             NewContactData.Middlename = "dddddd";
             NewContactData.Lastname = "ffffffff";
 
+            if (app.Contacts.ThereIsAcontact(1) == false)
+                {
+                    app.Contacts.CreateContact(new ContactData("AaaaaA"));
+                }
             app.Contacts.ModifyContact(1, NewContactData);
         }
 

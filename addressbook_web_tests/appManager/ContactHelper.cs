@@ -23,10 +23,10 @@ namespace addressbook_web_tests
         }
         public ContactHelper RemoveContact(int v)
         {
-            if (ThereIsAcontact(v) == false)
-            {
-                CreateContact(new ContactData("AaaaaA"));
-            }
+    //        if (ThereIsAcontact(v) == false)
+    //        {
+   //             CreateContact(new ContactData("AaaaaA"));
+  //         }
             SelectContact(v);
             CLickDeleteButton();
             CloseAlertMessage();
@@ -35,20 +35,12 @@ namespace addressbook_web_tests
         }
         public ContactHelper ModifyContact(int v, ContactData NewContactData)
         {
-            if(ThereIsAcontact(v) == false)
-            {
-                CreateContact(new ContactData ("AaaaaA"));
-            }
             SelectModifyContact(v);
             FillContactForm(NewContactData);
             UpdateContact();
             manager.Navi.ClickHomeButton();
             return this;
         }
-     //   private bool ThereIsAcontactForDelete(int v)
-   //     {
- //           return IsElementPresent(By.XPath("(//tr[@name='entry'][1]/td/a/img[@title='Edit'])");
- //       }
         public bool ThereIsAcontact(int v)
         {
             return IsElementPresent(By.XPath("//tr[@name='entry'][" + v + "]//img[@title='Edit']"));
