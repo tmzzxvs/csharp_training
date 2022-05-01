@@ -10,12 +10,10 @@ namespace addressbook_web_tests
 {
     public class GroupHelper : HelperBase
     {
-
         public GroupHelper(ApplicationManager manager) 
             : base(manager)
             {
             }
-
         public GroupHelper Create(GroupData group)
         {
             InitNewGroupCreation();
@@ -51,16 +49,12 @@ namespace addressbook_web_tests
             Type(By.Name("group_header"), group.Header);
             Type(By.Name("group_footer"), group.Footer);
             return this;
-        }
-
-        
+        }        
         public GroupHelper SubmitGroupCreation()
         {
             driver.FindElement(By.Name("submit")).Click();
             return this;
-        }
-        
-        
+        }     
         public GroupHelper SelectGroup(int index)
         {
             driver.FindElement(By.XPath("//div[@id='content']/form/span[" + index + "]/input")).Click();
@@ -84,6 +78,17 @@ namespace addressbook_web_tests
         public bool ThereIsAGroup(int v)
         {
             return IsElementPresent(By.XPath("//div[@id='content']/form/span[" + v + "]/input"));
+        }
+        public List<GroupData> GetGroupList()
+        {
+            List<GroupData> groups = new List<GroupData>();
+            manager.Navi.ReturnToGroupsPage();
+            ICollection<IWebElement> elements = driver.FindElements(By.CssSelector("span.group"));
+            foreach (IWebElement element in elements)
+            {
+                groups.Add(new GroupData(element.Text));
+            }
+            return groups;
         }
 
     }
