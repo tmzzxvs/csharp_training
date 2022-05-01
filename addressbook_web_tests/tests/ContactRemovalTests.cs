@@ -17,7 +17,7 @@ namespace addressbook_web_tests
             {
                 app.Contacts.CreateContact(new ContactData("AaaaaA"));
             }
-            app.Contacts.RemoveContact(1);
+            app.Contacts.RemoveContact(0);
         }
 
         

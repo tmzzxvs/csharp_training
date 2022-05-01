@@ -51,7 +51,7 @@ namespace addressbook_web_tests
         public ContactHelper FillContactForm(ContactData contact)
         {
             Type(By.Name("firstname"), contact.Firstname);
-            Type(By.Name("middlename"), contact.Firstname);
+            Type(By.Name("middlename"), contact.Middlename);
             Type(By.Name("lastname"), contact.Lastname);
             return this;
         }
@@ -69,7 +69,7 @@ namespace addressbook_web_tests
 
         public ContactHelper SelectContact(int index)
         {
-            driver.FindElement(By.XPath("//tr[@name='entry'][" + index + "]/ td/input")).Click();
+            driver.FindElement(By.XPath("//tr[@name='entry'][" + (index+1) + "]/ td/input")).Click();
             return this;
         }
         public ContactHelper CloseAlertMessage()
@@ -84,13 +84,23 @@ namespace addressbook_web_tests
         }
         public ContactHelper SelectModifyContact(int index)
         {
-            driver.FindElement(By.XPath("(//img[@title='Edit'])[" + index + "]")).Click();
+            driver.FindElement(By.XPath("(//img[@title='Edit'])[" + (index+1) + "]")).Click();
             return this;
         }
         public ContactHelper UpdateContact()
         {
             driver.FindElement(By.XPath("//input[@value='Update'][2]")).Click();
             return this;
+        }
+        public List<ContactData> GetContactList()
+        {
+            List<ContactData> contacts = new List<ContactData>();
+            ICollection<IWebElement> elements = driver.FindElements(By.XPath("//tr[@name='entry']"));
+            foreach (IWebElement elementFirstName in elements)
+            {
+                contacts.Add(new ContactData(elementFirstName.Text));
+            }
+            return contacts;
         }
 
     }

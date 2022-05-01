@@ -14,15 +14,15 @@ namespace addressbook_web_tests
 
         public void ContactModidyTest()
         {
-            ContactData NewContactData = new ContactData("updated_3");
-            NewContactData.Middlename = "dddddd";
-            NewContactData.Lastname = "ffffffff";
+            ContactData NewContactData = new ContactData("updated_01");
+            NewContactData.Middlename = "345345";
+            NewContactData.Lastname = "456457";
 
             if (app.Contacts.ThereIsAcontact(1) == false)
                 {
                     app.Contacts.CreateContact(new ContactData("AaaaaA"));
                 }
-            app.Contacts.ModifyContact(1, NewContactData);
+            app.Contacts.ModifyContact(0, NewContactData);
         }
 
         
