@@ -20,9 +20,7 @@ namespace addressbook_web_tests
             group.Header = "test_33";
 
             List<GroupData> oldGroups = app.Groups.GetGroupList();
-
             app.Groups.Create(group);
-
             List<GroupData> newGroups = app.Groups.GetGroupList();
             Assert.AreEqual(oldGroups.Count + 1, newGroups.Count);
             }
@@ -35,9 +33,7 @@ namespace addressbook_web_tests
             group.Header = "";
 
             List<GroupData> oldGroups = app.Groups.GetGroupList();
-
             app.Groups.Create(group);
-
             List<GroupData> newGroups = app.Groups.GetGroupList();
             Assert.AreEqual(oldGroups.Count + 1, newGroups.Count);
         }
@@ -50,9 +46,7 @@ namespace addressbook_web_tests
             group.Header = "";
 
             List<GroupData> oldGroups = app.Groups.GetGroupList();
-
             app.Groups.Create(group);
-
             List<GroupData> newGroups = app.Groups.GetGroupList();
             Assert.AreEqual(oldGroups.Count + 1, newGroups.Count);
         }

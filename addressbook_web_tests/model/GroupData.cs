@@ -28,6 +28,10 @@ namespace addressbook_web_tests
             }
             return Name == other.Name;
         }
+        public int GetHashCode()
+        {
+            return Name.GetHashCode();
+        }
         public string Name 
             { 
                 get { return name; }

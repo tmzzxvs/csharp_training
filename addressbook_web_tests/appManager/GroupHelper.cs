@@ -77,7 +77,7 @@ namespace addressbook_web_tests
         }
         public bool ThereIsAGroup(int v)
         {
-            return IsElementPresent(By.XPath("//div[@id='content']/form/span[" + (v) + "]/input"));
+            return IsElementPresent(By.XPath("//div[@id='content']/form/span[" + v + "]/input"));
         }
         public List<GroupData> GetGroupList()
         {
