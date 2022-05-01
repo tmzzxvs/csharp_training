@@ -57,7 +57,7 @@ namespace addressbook_web_tests
         }     
         public GroupHelper SelectGroup(int index)
         {
-            driver.FindElement(By.XPath("//div[@id='content']/form/span[" + index + "]/input")).Click();
+            driver.FindElement(By.XPath("//div[@id='content']/form/span[" + (index+1) + "]/input")).Click();
             return this;
         }
         public GroupHelper RemoveGroup()
@@ -77,7 +77,7 @@ namespace addressbook_web_tests
         }
         public bool ThereIsAGroup(int v)
         {
-            return IsElementPresent(By.XPath("//div[@id='content']/form/span[" + v + "]/input"));
+            return IsElementPresent(By.XPath("//div[@id='content']/form/span[" + (v) + "]/input"));
         }
         public List<GroupData> GetGroupList()
         {

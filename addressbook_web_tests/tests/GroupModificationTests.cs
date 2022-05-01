@@ -22,7 +22,7 @@ namespace addressbook_web_tests
             {
                 app.Groups.Create(new GroupData("group_2222"));
             }
-            app.Groups.Modify(1, newData);
+            app.Groups.Modify(0, newData);
 
         }
     }
