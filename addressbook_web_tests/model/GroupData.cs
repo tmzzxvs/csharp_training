@@ -9,8 +9,8 @@ namespace addressbook_web_tests
     public class GroupData : IEquatable<GroupData>, IComparable<GroupData>
     {
         private string name;
-        private string header = null;
-        private string footer = null;
+        private string header = "";
+        private string footer = "";
 
         public GroupData(string name)
             {

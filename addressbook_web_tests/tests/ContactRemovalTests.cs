@@ -13,11 +13,17 @@ namespace addressbook_web_tests
         [Test]
         public void ContactRemovalTest()
         {
-            if (app.Contacts.ThereIsAcontact(1) == false)
+            if (!app.Contacts.ThereIsAcontact(1))
             {
                 app.Contacts.CreateContact(new ContactData("AaaaaA"));
             }
+            List<ContactData> oldContact = app.Contacts.GetContactList();
             app.Contacts.RemoveContact(0);
+            List<ContactData> newContact = app.Contacts.GetContactList();
+            oldContact.RemoveAt(0);
+            oldContact.Sort();
+            newContact.Sort();
+            Assert.AreEqual(oldContact, newContact);
         }
 
         

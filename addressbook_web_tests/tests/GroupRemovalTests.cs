@@ -14,7 +14,7 @@ namespace addressbook_web_tests
         [Test]
         public void GroupRemovaltest()
         {
-            if (app.Groups.ThereIsAGroup(1) == false)
+            if (!app.Groups.ThereIsAGroup(1))
             {                
                 app.Groups.Create(new GroupData("group_2222"));
             }

@@ -94,13 +94,16 @@ namespace addressbook_web_tests
         }
         public List<ContactData> GetContactList()
         {
-            List<ContactData> contacts = new List<ContactData>();
+            List<ContactData> contactlist = new List<ContactData>();
             ICollection<IWebElement> elements = driver.FindElements(By.XPath("//tr[@name='entry']"));
-            foreach (IWebElement elementFirstName in elements)
+            foreach (IWebElement element in elements)
             {
-                contacts.Add(new ContactData(elementFirstName.Text));
+                contactlist.Add(new ContactData(element.FindElement(By.XPath("./td[3]")).Text)
+                {
+                    Lastname = element.FindElement(By.XPath("./ td[2]")).Text
+                });
             }
-            return contacts;
+            return contactlist;
         }
 
     }

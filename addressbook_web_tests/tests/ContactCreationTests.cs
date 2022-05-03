@@ -15,9 +15,9 @@ namespace addressbook_web_tests
         public void ContactCreationTest()
         {
 
-            ContactData contact = new ContactData("new_new");
+            ContactData contact = new ContactData("fn_new_new");
             contact.Middlename = "dddddd";
-            contact.Lastname = "ffffffff";
+            contact.Lastname = "ln_ffffffff";
 
             List<ContactData> oldContact = app.Contacts.GetContactList();
             app.Contacts.CreateContact(contact);
@@ -36,7 +36,31 @@ namespace addressbook_web_tests
             contact.Middlename = "";
             contact.Lastname = "";
 
+            List<ContactData> oldContact = app.Contacts.GetContactList();
             app.Contacts.CreateContact(contact);
+            List<ContactData> newContact = app.Contacts.GetContactList();
+            oldContact.Add(contact);
+            oldContact.Sort();
+            newContact.Sort();
+            Assert.AreEqual(oldContact, newContact);
+
+        }
+        [Test]
+        public void BadNameContactTest()
+        {
+
+            ContactData contact = new ContactData("d'fdf");
+            contact.Middlename = "hh'hh";
+            contact.Lastname = "jj'jj";
+
+            List<ContactData> oldContact = app.Contacts.GetContactList();
+            app.Contacts.CreateContact(contact);
+            List<ContactData> newContact = app.Contacts.GetContactList();
+            oldContact.Add(contact);
+            oldContact.Sort();
+            newContact.Sort();
+            Assert.AreEqual(oldContact, newContact);
+
         }
 
     }

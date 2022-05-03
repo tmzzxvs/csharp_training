@@ -18,7 +18,7 @@ namespace addressbook_web_tests
             newData.Footer = "ttt";
             newData.Header = "qqq";
 
-            if (app.Groups.ThereIsAGroup(1) == false)
+            if (!app.Groups.ThereIsAGroup(1))
             {
                 app.Groups.Create(new GroupData("group_2222"));
             }
