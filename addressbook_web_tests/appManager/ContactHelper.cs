@@ -110,9 +110,10 @@ namespace addressbook_web_tests
                 contactCache = new List<ContactData>();
                 ICollection<IWebElement> elements = driver.FindElements(By.XPath("//tr[@name='entry']"));
                 foreach (IWebElement element in elements)
-                {
+                {                    
                     contactCache.Add(new ContactData(element.FindElement(By.XPath("./td[3]")).Text)
                     {
+                        id = element.FindElement(By.TagName("input")).GetAttribute("value"),
                         Lastname = element.FindElement(By.XPath("./ td[2]")).Text
                     });
                 }
