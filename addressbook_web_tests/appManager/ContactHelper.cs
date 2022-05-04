@@ -24,11 +24,17 @@ namespace addressbook_web_tests
         public ContactHelper RemoveContact(int v)
         {
             SelectContact(v);
-            CLickDeleteButton();
+            RemoveContactClick();
             CloseAlertMessage();
             manager.Navi.ClickHomeButton();
             return this;
         }
+
+        public int GetContactCount()
+        {
+            return driver.FindElements(By.XPath("//tr[@name='entry']")).Count;
+        }
+
         public ContactHelper ModifyContact(int v, ContactData NewContactData)
         {
             SelectModifyContact(v);
@@ -45,7 +51,8 @@ namespace addressbook_web_tests
         public ContactHelper SubmitContactCreation()
         {
             driver.FindElement(By.Name("submit")).Click();
-                return this;
+            contactCache = null;
+            return this;
         }
 
         public ContactHelper FillContactForm(ContactData contact)
@@ -61,9 +68,10 @@ namespace addressbook_web_tests
             driver.FindElement(By.LinkText("add new")).Click();
             return this;
         }
-        public ContactHelper CLickDeleteButton()
+        public ContactHelper RemoveContactClick()
         {
             driver.FindElement(By.XPath("//input[@value='Delete']")).Click();
+            contactCache = null;
             return this;
         }
 
@@ -90,20 +98,26 @@ namespace addressbook_web_tests
         public ContactHelper UpdateContact()
         {
             driver.FindElement(By.XPath("//input[@value='Update'][2]")).Click();
+            contactCache = null;
             return this;
         }
+
+        private List<ContactData> contactCache = null;
         public List<ContactData> GetContactList()
         {
-            List<ContactData> contactlist = new List<ContactData>();
-            ICollection<IWebElement> elements = driver.FindElements(By.XPath("//tr[@name='entry']"));
-            foreach (IWebElement element in elements)
+            if (contactCache == null)
             {
-                contactlist.Add(new ContactData(element.FindElement(By.XPath("./td[3]")).Text)
+                contactCache = new List<ContactData>();
+                ICollection<IWebElement> elements = driver.FindElements(By.XPath("//tr[@name='entry']"));
+                foreach (IWebElement element in elements)
                 {
-                    Lastname = element.FindElement(By.XPath("./ td[2]")).Text
-                });
-            }
-            return contactlist;
+                    contactCache.Add(new ContactData(element.FindElement(By.XPath("./td[3]")).Text)
+                    {
+                        Lastname = element.FindElement(By.XPath("./ td[2]")).Text
+                    });
+                }
+            }            
+            return new List<ContactData>(contactCache);
         }
 
     }
