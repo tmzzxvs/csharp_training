@@ -71,6 +71,7 @@
     <Compile Include="appManager\LoginHelper.cs" />
     <Compile Include="appManager\NavigationHelper.cs" />
     <Compile Include="tests\AuthTestBase.cs" />
+    <Compile Include="tests\ContactInformationTest.cs" />
     <Compile Include="tests\ContactRemovalTests.cs" />
     <Compile Include="tests\ContactsModifyTests.cs" />
     <Compile Include="tests\GroupModificationTests.cs" />

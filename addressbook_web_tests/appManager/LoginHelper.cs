@@ -42,12 +42,15 @@ namespace addressbook_web_tests
         {
             return IsElementPresent(By.LinkText("Logout"));
         }
-        public bool IsLoggedIn(AccountData account)
+        public bool IsLoggedIn(AccountData account)            
         {
-            return IsLoggedIn() 
-                && driver.FindElement(By.XPath("//form[@name=\"logout\"]/b")).Text 
-                == "(" + account.Username + ")";            
+            return IsLoggedIn()
+                && GetLoggetUserName() == account.Username;            
         }
-        
+        public string GetLoggetUserName()
+        {
+            string text = driver.FindElement(By.XPath("//form[@name=\"logout\"]/b")).Text;
+            return text.Substring(1, text.Length - 2);
+        }
     }
 }
