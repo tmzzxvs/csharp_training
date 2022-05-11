@@ -15,8 +15,8 @@ namespace addressbook_web_tests
         public void ContactModidyTest()
         {
             ContactData NewContactData = new ContactData("updated_01");
-            NewContactData.Middlename = "345345";
-            NewContactData.Lastname = "456457";
+            NewContactData.MiddleName = "345345";
+            NewContactData.LastName = "456457";
 
             if (!app.Contacts.ThereIsAcontact(1))
                 {

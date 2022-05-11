@@ -16,8 +16,8 @@ namespace addressbook_web_tests
         {
 
             ContactData contact = new ContactData("fn_new_new");
-            contact.Middlename = "dddddd";
-            contact.Lastname = "ln_ffffffff";
+            contact.MiddleName = "dddddd";
+            contact.LastName = "ln_ffffffff";
 
             List<ContactData> oldContact = app.Contacts.GetContactList();
             app.Contacts.CreateContact(contact);
@@ -34,8 +34,8 @@ namespace addressbook_web_tests
         {
 
             ContactData contact = new ContactData("");
-            contact.Middlename = "";
-            contact.Lastname = "";
+            contact.MiddleName = "";
+            contact.LastName = "";
 
             List<ContactData> oldContact = app.Contacts.GetContactList();
             app.Contacts.CreateContact(contact);
@@ -52,8 +52,8 @@ namespace addressbook_web_tests
         {
 
             ContactData contact = new ContactData("d'fdf");
-            contact.Middlename = "hh'hh";
-            contact.Lastname = "jj'jj";
+            contact.MiddleName = "hh'hh";
+            contact.LastName = "jj'jj";
 
             List<ContactData> oldContact = app.Contacts.GetContactList();
             app.Contacts.CreateContact(contact);

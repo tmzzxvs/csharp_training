@@ -10,11 +10,15 @@ namespace addressbook_web_tests
     public class ContactData : IEquatable<ContactData>, IComparable<ContactData>
         {
         private string allPhones;
-        private string allEmail;
+        private string allEmails;
+        private string allData;
         public ContactData(string firstname)
             {
-                Firstname = firstname;
+                FirstName = firstname;
             }
+        public ContactData()
+        {         
+        }
         public bool Equals(ContactData other)
         {
             if (Object.ReferenceEquals(other, null))
@@ -25,16 +29,16 @@ namespace addressbook_web_tests
             {
                 return true;
             }
-            return Firstname == other.Firstname
-                 && Lastname == other.Lastname;
+            return FirstName == other.FirstName
+                 && LastName == other.LastName;
         }
         public override int GetHashCode()
         {
-            return Firstname.GetHashCode() + Lastname.GetHashCode();
+            return FirstName.GetHashCode() + LastName.GetHashCode();
         }
         public override string ToString()
         {
-            return " Firstname = " + Firstname + "\n" + "Lastname=" + Lastname;
+            return " Firstname = " + FirstName + "\n" + "Lastname=" + LastName;
         }
         public int CompareTo(ContactData other)
         {
@@ -42,11 +46,11 @@ namespace addressbook_web_tests
             {
                 return 1;
             }
-            return Firstname.CompareTo(other.Firstname)!=0 ? Firstname.CompareTo(other.Firstname) : Lastname.CompareTo(other.Lastname);
+            return FirstName.CompareTo(other.FirstName)!=0 ? FirstName.CompareTo(other.FirstName) : LastName.CompareTo(other.LastName);
         }
-        public string Firstname {get; set;}
-        public string Middlename {get; set;} 
-        public string Lastname {get; set;}
+        public string FirstName {get; set;}
+        public string MiddleName {get; set;} 
+        public string LastName {get; set;}
         public string Address {get; set;}
         public string HomePhone {get; set;}
         public string MobilePhone {get; set;}
@@ -56,13 +60,31 @@ namespace addressbook_web_tests
         public string Email2 { get; set; }
         public string Email3 { get; set; }
 
+        public string AllData
+        {
+            get
+            {
+                if (allData != null)
+                {
+                    return CleanUp(allData).Trim();
+                }
+                else
+                {
+                    return (CleanUp(FirstName) + CleanUp(MiddleName) + CleanUp(LastName) + CleanUp(Address)
+                         + CleanUp(HomePhone) + CleanUp(MobilePhone) + CleanUp(WorkPhone)
+                         + CleanUp(Email) + CleanUp(Email2) + CleanUp(Email3)).Trim();
+                }
+            }
+            set { allData = value; }
+        }
+
         public string AllPhones
         {
             get 
             {
                 if (allPhones != null)
                 {
-                    return allPhones;
+                    return CleanUp(allPhones).Trim();
                 }
                 else
                 {
@@ -71,29 +93,29 @@ namespace addressbook_web_tests
             }
             set { allPhones = value; }
         }
-        public string AllEmail
+        public string AllEmails
         {
             get
             {
-                if (allEmail != null)
+                if (allEmails != null)
                 {
-                    return allEmail;
+                    return CleanUp(allEmails).Trim();
                 }
                 else
                 {
                     return (CleanUp(Email) + CleanUp(Email2) + CleanUp(Email3)).Trim();
                 }
             }
-            set { allEmail = value; }
+            set { allEmails = value; }
         }
 
-        private string CleanUp(string phone)
+        private string CleanUp(string values)
         {
-            if (phone == null || phone == "")
+            if (values == null || values == "")
             {
                 return "";
             }
-            return Regex.Replace(phone, "[ ()-]", "") + "\r\n";
+            return Regex.Replace(values, "[\\^H:$\\^M:$\\^W:$ \\r\\n()-]", "");
         }
     }
 }
