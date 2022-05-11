@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
+using System.Text.RegularExpressions;
 
 namespace addressbook_web_tests
 {
@@ -158,6 +159,13 @@ namespace addressbook_web_tests
                 WorkPhone = workPhone
             };
             
+        }
+        public int GetNumberOfSearchResults()
+        {
+            manager.Navi.OpenHomePage();
+            string text = driver.FindElement(By.TagName("label")).Text;
+            Match m = new Regex(@"\d+").Match(text);
+            return Int32.Parse(m.Value);
         }
 
     }
