@@ -100,7 +100,7 @@ namespace addressbook_web_tests
                 foreach (IWebElement element in elements)
                 {
                     groupCache.Add(new GroupData(element.Text) {
-                    id = element.FindElement(By.TagName("input")).GetAttribute("value")
+                    Id = element.FindElement(By.TagName("input")).GetAttribute("value")
 
                     });                   
                     

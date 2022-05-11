@@ -31,7 +31,7 @@ namespace addressbook_web_tests
 
             foreach(ContactData contact in newContacts)
             {
-                Assert.AreNotEqual(contact.id, toBeRemoved.id);
+                Assert.AreNotEqual(contact.Id, toBeRemoved.Id);
             }
         }
 

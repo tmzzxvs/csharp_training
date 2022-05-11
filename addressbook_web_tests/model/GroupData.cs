@@ -43,7 +43,7 @@ namespace addressbook_web_tests
         public string Name {get; set;}
         public string Header {get; set;}
         public string Footer {get; set;}
-        public string id {get; set;}
+        public string Id {get; set;}
 
     }   
 }

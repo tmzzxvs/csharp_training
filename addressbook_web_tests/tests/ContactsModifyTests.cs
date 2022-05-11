@@ -35,7 +35,7 @@ namespace addressbook_web_tests
 
             foreach (ContactData contact in newContacts)
             {
-                if (contact.id == oldData.id)
+                if (contact.Id == oldData.Id)
                 {
                     Assert.AreEqual(NewContactData, contact);
                 }

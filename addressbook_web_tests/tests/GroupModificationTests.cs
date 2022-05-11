@@ -35,7 +35,7 @@ namespace addressbook_web_tests
 
             foreach (GroupData group in newGroups)
             {
-                if (group.id == oldData.id)
+                if (group.Id == oldData.Id)
                 {
                     Assert.AreEqual(newData.Name, group.Name);
                 }
