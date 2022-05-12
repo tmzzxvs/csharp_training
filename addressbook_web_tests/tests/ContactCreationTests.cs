@@ -9,16 +9,23 @@ namespace addressbook_web_tests
 {
     [TestFixture]
     public class ContactCreationTests : AuthTestBase
-    {              
-
-        [Test]
-        public void ContactCreationTest()
+    {
+        public static IEnumerable<ContactData> RandomContactDataProvider()
         {
-
-            ContactData contact = new ContactData("fn_new_new");
-            contact.MiddleName = "dddddd";
-            contact.LastName = "ln_ffffffff";
-
+            List<ContactData> contacts = new List<ContactData>();
+            for (int i = 0; i < 5; i++)
+            {
+                contacts.Add(new ContactData(GenerateRandomString(10))
+                {
+                    MiddleName = GenerateRandomString(20),
+                    LastName = GenerateRandomString(20)
+                });
+            }
+            return contacts;
+        }
+        [Test, TestCaseSource("RandomContactDataProvider")]
+        public void ContactCreationTest(ContactData contact)
+        {
             List<ContactData> oldContact = app.Contacts.GetContactList();
             app.Contacts.CreateContact(contact);
             Assert.AreEqual(oldContact.Count + 1, app.Contacts.GetContactCount());
@@ -29,28 +36,13 @@ namespace addressbook_web_tests
             Assert.AreEqual(oldContact, newContact);
         }
 
-        [Test]
-        public void EmptyContactCreationTest()
+
+
+
+
+ //       [Test]
+        public void ContactCreationTestBadName()
         {
-
-            ContactData contact = new ContactData("");
-            contact.MiddleName = "";
-            contact.LastName = "";
-
-            List<ContactData> oldContact = app.Contacts.GetContactList();
-            app.Contacts.CreateContact(contact);
-            Assert.AreEqual(oldContact.Count + 1, app.Contacts.GetContactCount());
-            List<ContactData> newContact = app.Contacts.GetContactList();
-            oldContact.Add(contact);
-            oldContact.Sort();
-            newContact.Sort();
-            Assert.AreEqual(oldContact, newContact);
-
-        }
-        [Test]
-        public void BadNameContactTest()
-        {
-
             ContactData contact = new ContactData("d'fdf");
             contact.MiddleName = "hh'hh";
             contact.LastName = "jj'jj";

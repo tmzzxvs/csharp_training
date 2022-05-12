@@ -13,11 +13,12 @@ namespace addressbook_web_tests
         private string allEmails;
         private string allData;
         public ContactData(string firstname)
-            {
-                FirstName = firstname;
-            }
+        {
+            FirstName = firstname;
+        }
         public ContactData()
-        {         
+        { 
+            
         }
         public bool Equals(ContactData other)
         {
@@ -38,7 +39,7 @@ namespace addressbook_web_tests
         }
         public override string ToString()
         {
-            return " Firstname = " + FirstName + "\n" + "Lastname=" + LastName;
+            return " Firstname= " + FirstName + "\nLastname= " + LastName + "\nMiddleName= " + MiddleName;
         }
         public int CompareTo(ContactData other)
         {
