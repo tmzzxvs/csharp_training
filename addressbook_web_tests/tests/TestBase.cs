@@ -27,6 +27,5 @@ namespace addressbook_web_tests
             }
             return builder.ToString();
         }
-
     }
 }
