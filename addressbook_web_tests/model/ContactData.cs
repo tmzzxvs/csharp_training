@@ -194,7 +194,14 @@ namespace addressbook_web_tests
             }
             else
             {
-                emails += $"{ email }\r\n";
+                if ((email2 == null || email2 == "") && (email3 == null || email3 == ""))
+                {
+                    emails += $"{email}";
+                }
+                else
+                {
+                    emails += $"{email}\r\n";
+                }
             }
             if (email2 == null || email2 == "")
             {
@@ -202,7 +209,14 @@ namespace addressbook_web_tests
             }
             else
             {
-                emails += $"{ email2 }\r\n";
+                if (email3 == null || email3 == "")
+                {
+                    emails += $"{email2}";
+                }
+                else
+                {
+                    emails += $"{email2}\r\n";
+                }
             }
             if (email3 == null || email3 == "")
             {
@@ -210,7 +224,7 @@ namespace addressbook_web_tests
             }
             else
             {
-                emails += $"{ email3 }";
+                emails += $"{email3}";
             }
             if ((email == null || email == "") && (email2 == null || email2 == "") && (email3 == null || email3 == ""))
             {
