@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
+using System.Xml.Serialization;
 
 namespace addressbook_web_tests
 {
@@ -80,7 +81,8 @@ namespace addressbook_web_tests
         public string Email2 { get; set; }
         [JsonIgnore]
         public string Email3 { get; set; }
-        [JsonIgnore]
+
+        [JsonIgnore, XmlIgnore]        
         public string AllPhones
         {
             get
@@ -96,7 +98,7 @@ namespace addressbook_web_tests
             }
             set { allPhones = value; }       
         }
-        [JsonIgnore]
+        [JsonIgnore, XmlIgnore]
         public string AllEmails
         {
             get
@@ -112,7 +114,8 @@ namespace addressbook_web_tests
             }
             set { allEmails = value; }
         }
-        [JsonIgnore]
+
+        [JsonIgnore, XmlIgnore]
         public string AllData
         {
             get
