@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
+using Newtonsoft.Json;
 
 namespace addressbook_web_tests
 {
@@ -56,19 +57,30 @@ namespace addressbook_web_tests
             }
             return Regex.Replace(value, "[ ()-]", "") + "\r\n";
         }
+        [JsonIgnore]
         public string Id { get; set; }
         public string FirstName {get; set;}
         public string MiddleName {get; set;} 
         public string LastName {get; set;}
+        [JsonIgnore]
         public string NickName { get; set; }
+        [JsonIgnore]
         public string Address {get; set;}
+        [JsonIgnore]
         public string HomePhone {get; set;}
+        [JsonIgnore]
         public string MobilePhone {get; set;}
+        [JsonIgnore]
         public string WorkPhone {get; set;}
+        [JsonIgnore]
         public string FaxPhone { get; set; }
+        [JsonIgnore]
         public string Email { get; set; }
+        [JsonIgnore]
         public string Email2 { get; set; }
+        [JsonIgnore]
         public string Email3 { get; set; }
+        [JsonIgnore]
         public string AllPhones
         {
             get
@@ -82,7 +94,9 @@ namespace addressbook_web_tests
                     return (CleanUp(HomePhone) + CleanUp(MobilePhone) + CleanUp(WorkPhone)).Trim();
                 }
             }
-            set { allPhones = value; }        }
+            set { allPhones = value; }       
+        }
+        [JsonIgnore]
         public string AllEmails
         {
             get
@@ -98,6 +112,7 @@ namespace addressbook_web_tests
             }
             set { allEmails = value; }
         }
+        [JsonIgnore]
         public string AllData
         {
             get
@@ -118,7 +133,8 @@ namespace addressbook_web_tests
                         DetailEmailsFields(Email, Email2, Email3);
                 }
             }
-            set { allData = value; }        }
+            set { allData = value; }
+        }
         private string DetailFIOFields(string value)
         {
             if (value == null || value == "")
