@@ -40,7 +40,7 @@ namespace addressbook_web_tests
 
 
 
- //       [Test]
+        [Test]
         public void ContactCreationTestBadName()
         {
             ContactData contact = new ContactData("d'fdf");

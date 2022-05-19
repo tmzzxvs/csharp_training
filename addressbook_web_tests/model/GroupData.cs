@@ -12,6 +12,10 @@ namespace addressbook_web_tests
             {
                 Name = name;
             }
+        public GroupData()
+        {
+            
+        }
         public bool Equals(GroupData other)
         {
             if (Object.ReferenceEquals(other, null))

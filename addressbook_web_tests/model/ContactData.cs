@@ -183,25 +183,19 @@ namespace addressbook_web_tests
             else
             {
                 return phones;
-            }
+            }       
+        
         }
         private string DetailEmailsFields(string email, string email2, string email3)
         {
-            string emails = "\r\n\r\n";
+            string emails = "\r\n";
             if (email == null || email == "")
             {
                 emails += $"";
             }
             else
             {
-                if ((email2 == null || email2 == "") && (email3 == null || email3 == ""))
-                {
-                    emails += $"{email}";
-                }
-                else
-                {
-                    emails += $"{email}\r\n";
-                }
+                emails += $"\r\n{email}";
             }
             if (email2 == null || email2 == "")
             {
@@ -209,14 +203,7 @@ namespace addressbook_web_tests
             }
             else
             {
-                if (email3 == null || email3 == "")
-                {
-                    emails += $"{email2}";
-                }
-                else
-                {
-                    emails += $"{email2}\r\n";
-                }
+                emails += $"\r\n{email2}";
             }
             if (email3 == null || email3 == "")
             {
@@ -224,7 +211,7 @@ namespace addressbook_web_tests
             }
             else
             {
-                emails += $"{email3}";
+                emails += $"\r\n{email3}";
             }
             if ((email == null || email == "") && (email2 == null || email2 == "") && (email3 == null || email3 == ""))
             {
