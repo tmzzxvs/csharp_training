@@ -114,7 +114,6 @@ namespace addressbook_web_tests
             }
             set { allEmails = value; }
         }
-
         [JsonIgnore, XmlIgnore]
         public string AllData
         {
@@ -127,49 +126,91 @@ namespace addressbook_web_tests
                 else
                 {
                     return
-                        DetailFIOFields(FirstName) +
-                        DetailFIOFields(MiddleName) +
-                        DetailFIOFields(LastName).Trim() +
-                        DetailFields(NickName) +
-                        DetailFields(Address) +
-                        DetailPhonesFields(HomePhone, MobilePhone, WorkPhone, FaxPhone) +
-                        DetailEmailsFields(Email, Email2, Email3);
+                        DetailFullNameBlock(FirstName, MiddleName, LastName) +
+                        DetailFields(DetailFullNameBlock(FirstName, MiddleName, LastName), NickName) +
+                        DetailFields(NickName, Address) +
+                        DetailPhonesBlock(HomePhone, MobilePhone, WorkPhone, FaxPhone) +
+                        DetailEmailsBlock(Email, Email2, Email3);
                 }
             }
             set { allData = value; }
         }
-        private string DetailFIOFields(string value)
+        private string DetailFields(string beforefield, string value)
         {
+
             if (value == null || value == "")
             {
                 return $"";
             }
             else
             {
-                return $"{ value } ";
+                if (beforefield == null || beforefield == "")
+                {
+                    return $"{value}";
+                }
+                else
+                {
+                    return $"\r\n{value}";
+                }
+
             }
         }
-        private string DetailFields(string value)
+        private string DetailFullNameBlock(string firstname, string middlename, string lastname)
         {
-            if (value == null || value == "")
+            string fullname = $"";
+
+            if (firstname == null || firstname == "")
             {
-                return $"".Trim();
+                fullname += $"";
             }
             else
             {
-                return $"\r\n{ value }";
+                fullname += $"{firstname}";
             }
+
+            if (middlename == null || middlename == "")
+            {
+                fullname += $"";
+            }
+            else
+            {
+                if (firstname == null || firstname == "")
+                {
+                    fullname += $"{middlename}";
+                }
+                else
+                {
+                    fullname += $" {middlename}";
+                }
+            }
+
+            if (lastname == null || lastname == "")
+            {
+                fullname += $"";
+            }
+            else
+            {
+                if ((firstname == null || firstname == "") && (middlename == null || middlename == ""))
+                {
+                    fullname += $"{lastname}";
+                }
+                else
+                {
+                    fullname += $" {lastname}";
+                }
+            }
+            return fullname;
         }
-        private string DetailPhonesFields(string home, string mobile, string work, string fax)
+        private string DetailPhonesBlock(string home, string mobile, string work, string fax)
         {
-            string phones = "\r\n\r\n";
+            string phones = "\r\n";
             if (home == null || home == "")
             {
                 phones += $"";
             }
             else
             {
-                phones += $"H: { home }\r\n";
+                phones += $"\r\nH: {home}";
             }
             if (mobile == null || mobile == "")
             {
@@ -177,7 +218,7 @@ namespace addressbook_web_tests
             }
             else
             {
-                phones += $"M: { mobile }\r\n";
+                phones += $"\r\nM: {mobile}";
             }
             if (work == null || work == "")
             {
@@ -185,7 +226,7 @@ namespace addressbook_web_tests
             }
             else
             {
-                phones += $"W: { work }\r\n";
+                phones += $"\r\nW: {work}";
             }
             if (fax == null || fax == "")
             {
@@ -193,7 +234,7 @@ namespace addressbook_web_tests
             }
             else
             {
-                phones += $"F: { fax }";
+                phones += $"\r\nF: {fax}";
             }
             if ((home == null || home == "") && (mobile == null || mobile == "") && (work == null || work == "") && (fax == null || fax == ""))
             {
@@ -202,10 +243,9 @@ namespace addressbook_web_tests
             else
             {
                 return phones;
-            }       
-        
+            }
         }
-        private string DetailEmailsFields(string email, string email2, string email3)
+        private string DetailEmailsBlock(string email, string email2, string email3)
         {
             string emails = "\r\n";
             if (email == null || email == "")
