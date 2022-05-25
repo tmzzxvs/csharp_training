@@ -125,6 +125,7 @@
     <Compile Include="appManager\ApplicationManager.cs" />
     <Compile Include="model\AddressbookDB.cs" />
     <Compile Include="model\ContactData.cs" />
+    <Compile Include="model\GroupContactRelation.cs" />
     <Compile Include="model\GroupData.cs" />
     <Compile Include="appManager\GroupHelper.cs" />
     <Compile Include="appManager\HelperBase.cs" />

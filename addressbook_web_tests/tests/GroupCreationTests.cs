@@ -111,15 +111,10 @@ namespace addressbook_web_tests
         [Test]
         public void TestDBConnectivity()
         {
-            DateTime start = DateTime.Now;
-            List<GroupData> fromUi = app.Groups.GetGroupList();
-            DateTime end = DateTime.Now;
-            Console.Out.Write(end.Subtract(start));
-
-            start = DateTime.Now;
-            List<GroupData> fromDb = GroupData.GetAll();     
-            end = DateTime.Now;
-            Console.Out.Write(end.Subtract(start));
+            foreach (ContactData contact in GroupData.GetAll()[0].GetContacts())
+            {
+                Console.Out.WriteLine(contact);
+            }
         }
     }
 }

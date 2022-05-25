@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using System.Xml.Serialization;
+using LinqToDB.Mapping;
 
 namespace addressbook_web_tests
 {
+    [Table(Name ="addressbook")]
     public class ContactData : IEquatable<ContactData>, IComparable<ContactData>
         {
         private string allPhones;
@@ -19,8 +21,7 @@ namespace addressbook_web_tests
             FirstName = firstname;
         }
         public ContactData()
-        { 
-            
+        {           
         }
         public bool Equals(ContactData other)
         {
@@ -58,10 +59,13 @@ namespace addressbook_web_tests
             }
             return Regex.Replace(value, "[ ()-]", "") + "\r\n";
         }
-        [JsonIgnore]
+        [JsonIgnore, Column(Name ="id"), PrimaryKey]
         public string Id { get; set; }
+        [Column(Name = "firstname")]
         public string FirstName {get; set;}
-        public string MiddleName {get; set;} 
+        [Column(Name = "middlename")]
+        public string MiddleName {get; set;}
+        [Column(Name = "lastname")]
         public string LastName {get; set;}
         [JsonIgnore]
         public string NickName { get; set; }
