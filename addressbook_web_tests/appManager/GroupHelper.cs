@@ -21,7 +21,7 @@ namespace addressbook_web_tests
             SubmitGroupCreation();
             manager.Navi.ReturnToGroupsPage();
             return this;
-        }
+        }        
         public GroupHelper Modify(int v, GroupData newData)
         {
             SelectGroup(v);
@@ -31,18 +31,32 @@ namespace addressbook_web_tests
             manager.Navi.ReturnToGroupsPage();
             return this;
         }
-
-        public int GetGroupCount()
+        public GroupHelper Modify(GroupData group, GroupData newData)
         {
-           return driver.FindElements(By.CssSelector("span.group")).Count;
+            SelectGroup(group.Id);
+            InitGroupModification();
+            FillGroupForm(newData);
+            SubmitGroupModification();
+            manager.Navi.ReturnToGroupsPage();
+            return this;
+        }        
+        public GroupHelper Remove(int v)
+        {
+            SelectGroup(v);
+            RemoveGroup();
+            manager.Navi.ReturnToGroupsPage();
+            return this;
         }
-
         public GroupHelper Remove(GroupData group)
         {
             SelectGroup(group.Id);
             RemoveGroup();
             manager.Navi.ReturnToGroupsPage();
             return this;
+        }
+        public int GetGroupCount()
+        {
+            return driver.FindElements(By.CssSelector("span.group")).Count;
         }
         public GroupHelper InitNewGroupCreation()
         {

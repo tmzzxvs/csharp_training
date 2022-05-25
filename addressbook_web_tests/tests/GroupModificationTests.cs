@@ -14,7 +14,7 @@ namespace addressbook_web_tests
 
         public void GroupModificationTest()
         {
-            GroupData newData = new GroupData("updated");
+            GroupData newData = new GroupData("updated_1");
             newData.Footer = "ttt";
             newData.Header = "qqq";
 
@@ -23,12 +23,14 @@ namespace addressbook_web_tests
                 app.Groups.Create(new GroupData("group_2222"));
             }
 
-            List<GroupData> oldGroups = app.Groups.GetGroupList();
+
+
+            List<GroupData> oldGroups = GroupData.GetAll();
             GroupData oldData = oldGroups[0];
-            app.Groups.Modify(0, newData);
+            app.Groups.Modify(oldData, newData);
             Assert.AreEqual(oldGroups.Count, app.Groups.GetGroupCount());
-            List<GroupData> newGroups = app.Groups.GetGroupList();
-            oldGroups[0].Name = newData.Name;
+            List<GroupData> newGroups = GroupData.GetAll();
+            oldGroups[0].Id = newData.Id;
             oldGroups.Sort();
             newGroups.Sort();
             Assert.AreEqual(oldGroups, newGroups);

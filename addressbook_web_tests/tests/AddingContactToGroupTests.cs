@@ -23,7 +23,6 @@ namespace addressbook_web_tests
             oldList.Add(contact);
             newList.Sort();
             oldList.Sort();
-
             Assert.AreEqual(oldList, newList);
         }
     }

@@ -45,6 +45,14 @@ namespace addressbook_web_tests
             manager.Navi.ClickHomeButton();
             return this;
         }
+        public ContactHelper ModifyContact(ContactData contact, ContactData NewContactData)
+        {
+            SelectModifyContactDBtest(contact.Id);
+            FillContactForm(NewContactData);
+            UpdateContact();
+            manager.Navi.ClickHomeButton();
+            return this;
+        }
         public void AddContactToGroup(ContactData contact, GroupData group)
         {
             manager.Navi.OpenHomePage();
@@ -127,6 +135,11 @@ namespace addressbook_web_tests
         public ContactHelper SelectModifyContact(int index)
         {
             driver.FindElement(By.XPath("(//img[@title='Edit'])[" + (index+1) + "]")).Click();
+            return this;
+        }
+        public ContactHelper SelectModifyContactDBtest(string contactId)
+        {
+            driver.FindElement(By.XPath("//a[@href='edit.php?id=" + (contactId) + "']")).Click();
             return this;
         }
         public ContactHelper UpdateContact()
