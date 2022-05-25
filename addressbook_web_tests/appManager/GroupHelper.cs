@@ -37,9 +37,9 @@ namespace addressbook_web_tests
            return driver.FindElements(By.CssSelector("span.group")).Count;
         }
 
-        public GroupHelper Remove(int v)
+        public GroupHelper Remove(GroupData group)
         {
-            SelectGroup(v);
+            SelectGroup(group.Id);
             RemoveGroup();
             manager.Navi.ReturnToGroupsPage();
             return this;
@@ -65,6 +65,11 @@ namespace addressbook_web_tests
         public GroupHelper SelectGroup(int index)
         {
             driver.FindElement(By.XPath("//div[@id='content']/form/span[" + (index+1) + "]/input")).Click();
+            return this;
+        }
+        public GroupHelper SelectGroup(string id)
+        {
+            driver.FindElement(By.XPath("(//input[@name='selected[]' and @value='"+id+"'])")).Click();
             return this;
         }
         public GroupHelper RemoveGroup()

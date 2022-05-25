@@ -19,10 +19,13 @@ namespace addressbook_web_tests
                 app.Groups.Create(new GroupData("group_2222"));
             }
 
-            List<GroupData> oldGroups = app.Groups.GetGroupList();
-            app.Groups.Remove(0);
+            List<GroupData> oldGroups = GroupData.GetAll();
+            GroupData ToBeRemoved = oldGroups[0];
+
+            app.Groups.Remove(ToBeRemoved);
+
             Assert.AreEqual(oldGroups.Count - 1, app.Groups.GetGroupCount());
-            List<GroupData> newGroups = app.Groups.GetGroupList();
+            List<GroupData> newGroups = GroupData.GetAll();
             GroupData toBeRemoved = oldGroups[0];
             oldGroups.RemoveAt(0);
             Assert.AreEqual(oldGroups, newGroups);
