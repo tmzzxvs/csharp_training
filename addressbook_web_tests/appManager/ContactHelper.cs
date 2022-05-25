@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 using System.Text.RegularExpressions;
+using OpenQA.Selenium.Support.UI;
 
 namespace addressbook_web_tests
 {
@@ -21,7 +22,7 @@ namespace addressbook_web_tests
             SubmitContactCreation();
             ReturnToHomePage();
             return this;
-        }
+        }               
 
         public ContactHelper RemoveContact(int v)
         {
@@ -44,6 +45,38 @@ namespace addressbook_web_tests
             manager.Navi.ClickHomeButton();
             return this;
         }
+        public void AddContactToGroup(ContactData contact, GroupData group)
+        {
+            manager.Navi.OpenHomePage();
+            ClearGroupFilter();
+            SelectContact(contact.Id);
+            SelectGroupToAdd(group.Name);
+            CommitAddingContactToGroup();
+            new WebDriverWait(driver, TimeSpan.FromSeconds(10))
+                .Until(d => d.FindElements(By.CssSelector("div.msgbox")).Count > 0);
+
+        }
+
+        private void CommitAddingContactToGroup()
+        {
+            driver.FindElement(By.Name("add")).Click();
+        }
+
+        private void SelectGroupToAdd(string name)
+        {
+            new SelectElement(driver.FindElement(By.Name("to_group"))).SelectByText(name);
+        }
+
+        private void SelectContact(string contactId)
+        {
+            driver.FindElement(By.Id(contactId)).Click();
+        }
+
+        private void ClearGroupFilter()
+        {
+            new SelectElement(driver.FindElement(By.Name("group"))).SelectByText("[all]");
+        }
+
         public bool ThereIsAcontact(int v)
         {
             return IsElementPresent(By.XPath("//tr[@name='entry'][" + v + "]//img[@title='Edit']"));
@@ -192,7 +225,6 @@ namespace addressbook_web_tests
                AllData = allData
             };
         }
-
         private void ClickContactProperties(int index)
         {
             driver.FindElement(By.XPath("(//img[@title='Details'])[" + (index + 1) + "]")).Click();

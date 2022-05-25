@@ -85,6 +85,8 @@ namespace addressbook_web_tests
         public string Email2 { get; set; }
         [JsonIgnore]
         public string Email3 { get; set; }
+        [Column(Name ="deprecated")]
+        public string Deprecated { get; set; }
 
         [JsonIgnore, XmlIgnore]        
         public string AllPhones
@@ -283,6 +285,13 @@ namespace addressbook_web_tests
             else
             {
                 return emails;
+            }
+        }
+        public static List<ContactData> GetAll()
+        {
+            using (AddressBookDB db = new AddressBookDB())
+            {
+                return (from c in db.Contacts.Where(x => x.Deprecated == "0000-00-00 00:00:00") select c).ToList();
             }
         }
     }
