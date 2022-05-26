@@ -21,6 +21,8 @@ namespace addressbook_web_tests
             app.Contacts.RemoveContact(0);
             Assert.AreEqual(oldContacts.Count - 1, app.Contacts.GetContactCount());
             List<ContactData> newContacts = ContactData.GetAll();
+
+
             ContactData toBeRemoved = oldContacts[0];
             oldContacts.RemoveAt(0);
             oldContacts.Sort();

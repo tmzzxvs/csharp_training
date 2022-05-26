@@ -116,5 +116,20 @@ namespace addressbook_web_tests
                 Console.Out.WriteLine(contact.Deprecated);
             }
         }
+
+        [Test]
+        public void TestDbConnectivity_1()
+        {
+            DateTime start = DateTime.Now;
+            List<GroupData> fromUi = app.Groups.GetGroupList();
+            DateTime end = DateTime.Now;
+            Console.Out.WriteLine($"fromUi: {end.Subtract(start)}");
+
+            start = DateTime.Now;
+            using (AddressBookDB db = new AddressBookDB()) ; 
+            end = DateTime.Now;
+            Console.Out.WriteLine($"fromDb: {end.Subtract(start)}");
+        }
+
     }
 }

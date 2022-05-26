@@ -22,7 +22,7 @@ namespace addressbook_web_tests
             SubmitContactCreation();
             ReturnToHomePage();
             return this;
-        }               
+        }              
 
         public ContactHelper RemoveContact(int v)
         {
@@ -63,6 +63,25 @@ namespace addressbook_web_tests
             new WebDriverWait(driver, TimeSpan.FromSeconds(10))
                 .Until(d => d.FindElements(By.CssSelector("div.msgbox")).Count > 0);
 
+        }
+        public void RemoveContactFromGroup(ContactData contact, GroupData group)
+        {
+            manager.Navi.OpenHomePage();
+            SelectGroupWithContact(group.Id);
+            SelectContact(contact.Id);
+            CommitDeleteContactFromGroup();
+            new WebDriverWait(driver, TimeSpan.FromSeconds(10))
+                .Until(d => d.FindElements(By.CssSelector("div.msgbox")).Count > 0);
+        }
+
+        private void CommitDeleteContactFromGroup()
+        {
+            driver.FindElement(By.XPath("//input[@name='remove']")).Click();
+        }
+
+        private void SelectGroupWithContact(string id)
+        {
+            new SelectElement(driver.FindElement(By.Name("group"))).SelectByValue(id);
         }
 
         private void CommitAddingContactToGroup()

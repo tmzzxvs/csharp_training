@@ -20,7 +20,7 @@ namespace addressbook_web_tests
             app.Contacts.AddContactToGroup(contact, group);
 
             List<ContactData> newList = group.GetContacts();
-            oldList.Add(contact);
+
             newList.Sort();
             oldList.Sort();
             Assert.AreEqual(oldList, newList);
