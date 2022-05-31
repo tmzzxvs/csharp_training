@@ -16,6 +16,7 @@ namespace addressbook_web_tests
             }
         public GroupHelper Create(GroupData group)
         {
+            manager.Navi.GoToGroupsPage();
             InitNewGroupCreation();
             FillGroupForm(group);
             SubmitGroupCreation();
@@ -105,6 +106,7 @@ namespace addressbook_web_tests
         }
         public bool ThereIsAGroup(int v)
         {
+            manager.Navi.GoToGroupsPage();
             return IsElementPresent(By.XPath("//div[@id='content']/form/span[" + v + "]/input"));
         }
 

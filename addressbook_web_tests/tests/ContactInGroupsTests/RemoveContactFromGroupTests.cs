@@ -14,9 +14,28 @@ namespace addressbook_web_tests
 
         public void TestRemoveFromGroup()
         {
-            GroupData group = GroupData.GetAll()[0];
+            if (GroupData.ThereIsGroupInBase())
+            {
+                app.Groups.Create(new GroupData(GenerateRandomString(20)));
+            }
+            if (ContactData.ThereIsContactInBase())
+            {
+                app.Contacts.CreateContact(new ContactData(GenerateRandomString(20)));
+            }
+
+
+
+            GroupData group = GroupData.GetAll().FirstOrDefault(gr => gr.GetContacts().Count() > 0);
+            if (group == null)
+            {
+                group = GroupData.GetAll()[0];
+                app.Contacts.AddContactToGroup(ContactData.GetAll().First(), group);
+            }
             List<ContactData> oldList = group.GetContacts();
             ContactData contact = ContactData.GetAll().Intersect(oldList).First();
+
+
+
 
             app.Contacts.RemoveContactFromGroup(contact, group);
 

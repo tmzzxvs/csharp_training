@@ -4,6 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
+using System;
+using System.Text.RegularExpressions;
+using System.Threading;
+using System.IO;
+using System.Xml;
+using System.Xml.Serialization;
+using Newtonsoft.Json;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace addressbook_web_tests
 {
@@ -28,5 +36,19 @@ namespace addressbook_web_tests
             }
             
         }
+        public static IEnumerable<GroupData> RandomGroupDataProvider()
+        {
+            List<GroupData> groups = new List<GroupData>();
+            for (int i = 0; i < 5; i++)
+            {
+                groups.Add(new GroupData(GenerateRandomString(15))
+                {
+                    Header = GenerateRandomString(30),
+                    Footer = GenerateRandomString(30)
+                });
+            }
+            return groups;
+        }
+        
     }
 }

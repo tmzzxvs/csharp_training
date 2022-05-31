@@ -71,5 +71,16 @@ namespace addressbook_web_tests
                         select c).Distinct().ToList();
             }
         }
+        public static bool ThereIsGroupInBase()
+        {
+            if (GetAll().Count() == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }   
 }

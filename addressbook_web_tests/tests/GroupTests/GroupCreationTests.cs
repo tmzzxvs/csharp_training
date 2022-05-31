@@ -11,27 +11,11 @@ using Newtonsoft.Json;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Linq;
 
-
-
 namespace addressbook_web_tests
 {
     [TestFixture]
     public class GroupCreationTests : GroupTestBase
     {
-        public static IEnumerable<GroupData> RandomGroupDataProvider()
-        {
-            List<GroupData> groups = new List<GroupData>();
-            for (int i = 0; i < 5; i++)
-            {
-                groups.Add(new GroupData(GenerateRandomString(15))
-                {
-                    Header = GenerateRandomString(30),
-                    Footer = GenerateRandomString(30)
-                });
-            }
-            return groups;
-        }
-
         public static IEnumerable<GroupData> GroupDataFromCsvFile()
         {
             List<GroupData> groups = new List<GroupData>();
@@ -49,7 +33,7 @@ namespace addressbook_web_tests
         }
         public static IEnumerable<GroupData> GroupDataFromXmlFile()
         {
-            return (List<GroupData>) new XmlSerializer(typeof(List<GroupData>)).Deserialize(new StreamReader(@"groups.xml"));
+            return (List<GroupData>)new XmlSerializer(typeof(List<GroupData>)).Deserialize(new StreamReader(@"groups.xml"));
         }
         public static IEnumerable<GroupData> GroupDataFromJsonFile()
         {

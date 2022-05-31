@@ -113,6 +113,7 @@ namespace addressbook_web_tests
 
         public bool ThereIsAcontact(int v)
         {
+            manager.Navi.OpenHomePage();
             return IsElementPresent(By.XPath("//tr[@name='entry'][" + v + "]//img[@title='Edit']"));
         }
 
