@@ -131,22 +131,22 @@
     <Compile Include="appManager\HelperBase.cs" />
     <Compile Include="appManager\LoginHelper.cs" />
     <Compile Include="appManager\NavigationHelper.cs" />
-    <Compile Include="tests\AddingContactToGroupTests.cs" />
-    <Compile Include="tests\AuthTestBase.cs" />
-    <Compile Include="tests\ContactInformationTest.cs" />
-    <Compile Include="tests\ContactRemovalTests.cs" />
-    <Compile Include="tests\ContactsModifyTests.cs" />
-    <Compile Include="tests\ContactTestBase.cs" />
-    <Compile Include="tests\GroupModificationTests.cs" />
-    <Compile Include="tests\GroupTestBase.cs" />
-    <Compile Include="tests\LoginTests.cs" />
-    <Compile Include="tests\RemoveContactFromGroupTests.cs" />
-    <Compile Include="tests\SearchTests.cs" />
-    <Compile Include="tests\TestBase.cs" />
+    <Compile Include="tests\ContactInGroupsTests\AddingContactToGroupTests.cs" />
+    <Compile Include="tests\TestBase\AuthTestBase.cs" />
+    <Compile Include="tests\ContactTests\ContactInformationTest.cs" />
+    <Compile Include="tests\ContactTests\ContactRemovalTests.cs" />
+    <Compile Include="tests\ContactTests\ContactsModifyTests.cs" />
+    <Compile Include="tests\TestBase\ContactTestBase.cs" />
+    <Compile Include="tests\GroupTests\GroupModificationTests.cs" />
+    <Compile Include="tests\TestBase\GroupTestBase.cs" />
+    <Compile Include="tests\OtherTests\LoginTests.cs" />
+    <Compile Include="tests\ContactInGroupsTests\RemoveContactFromGroupTests.cs" />
+    <Compile Include="tests\OtherTests\SearchTests.cs" />
+    <Compile Include="tests\TestBase\TestBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="tests\GroupCreationTests.cs" />
-    <Compile Include="tests\ContactCreationTests.cs" />
-    <Compile Include="tests\GroupRemovalTests.cs" />
+    <Compile Include="tests\GroupTests\GroupCreationTests.cs" />
+    <Compile Include="tests\ContactTests\ContactCreationTests.cs" />
+    <Compile Include="tests\GroupTests\GroupRemovalTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

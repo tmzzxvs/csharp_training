@@ -22,8 +22,15 @@ namespace addressbook_web_tests
             SubmitContactCreation();
             ReturnToHomePage();
             return this;
-        }              
-
+        }
+        public ContactHelper RemoveContact(ContactData contact)
+        {
+            SelectContact(contact.Id);
+            RemoveContactClick();
+            CloseAlertMessage();
+            manager.Navi.ClickHomeButton();
+            return this;
+        }
         public ContactHelper RemoveContact(int v)
         {
             SelectContact(v);

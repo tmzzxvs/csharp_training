@@ -17,8 +17,11 @@ namespace addressbook_web_tests
             {
                 app.Contacts.CreateContact(new ContactData("AaaaaA"));
             }
+            
+            
             List<ContactData> oldContacts = ContactData.GetAll();
-            app.Contacts.RemoveContact(0);
+            ContactData oldData = oldContacts[0];
+            app.Contacts.RemoveContact(oldData);
             Assert.AreEqual(oldContacts.Count - 1, app.Contacts.GetContactCount());
             List<ContactData> newContacts = ContactData.GetAll();
 

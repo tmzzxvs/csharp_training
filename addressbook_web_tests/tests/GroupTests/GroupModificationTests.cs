@@ -30,7 +30,7 @@ namespace addressbook_web_tests
             app.Groups.Modify(oldData, newData);
             Assert.AreEqual(oldGroups.Count, app.Groups.GetGroupCount());
             List<GroupData> newGroups = GroupData.GetAll();
-            oldGroups[0].Id = newData.Id;
+            oldGroups[0].Name = newData.Name;
             oldGroups.Sort();
             newGroups.Sort();
             Assert.AreEqual(oldGroups, newGroups);
